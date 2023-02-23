@@ -3,42 +3,56 @@ let currentLat = '';
 let currentLng = '';
 let map;
 let marker;
+let searchInput;
+let dataIp = document.getElementById("ip");
+let dataLocation = document.getElementById("location");
+let dataTimezone = document.getElementById("timezone");
+let dataIsp = document.getElementById("isp");
 
 // Get current IP address from visitor
 function defaultIp() {
-    fetch('https://api.ipify.org?format=json')
+    fetch('http://ip-api.com/json/')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            currentIp = data.ip;
-            getData(`ipAddress=${currentIp}`);
+            currentIp = data.query;
+            getData(currentIp);
         })
 }
 
 // Get the additional data based on the IP address
 function getData(ipAddress) {
-    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_zC7fQED6dDwU68iNqoctowOiqweNq&${ipAddress}`)
+    fetch(`http://ip-api.com/json/${ipAddress}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
-            currentLat = data.location.lat;
-            currentLng = data.location.lng;
+            if (data.status == 'success') {
+                console.log(data);
+                currentLat = data.lat;
+                currentLng = data.lon;
 
-            // Show the data in white block
-            document.getElementById("ip").innerHTML = data.ip;
-            document.getElementById("location").innerHTML = `${data.location.region}, ${data.location.country} ${data.location.postalCode}`;
-            document.getElementById("timezone").innerHTML = data.location.timezone;
-            document.getElementById("isp").innerHTML = data.isp;
+                // Show the data in white block
+                dataIp.innerHTML = data.query;
+                dataLocation.innerHTML = `${data.city}, ${data.country} ${data.zip}`;
+                dataTimezone.innerHTML = data.timezone;
+                dataIsp.innerHTML = data.isp;
 
-            // Get the map
-            if (map !== undefined) {
-                map.remove();
+                // Get the map
+                if (map !== undefined) {
+                    map.remove();
+                }
+                getMap(currentLat, currentLng);
+                document.getElementById("map").style = "opacity: 1;";
+            } else {
+                console.log(data);
+                dataIp.innerHTML = 'Invalid IP address';
+                dataLocation.innerHTML = 'Invalid query';
+                dataTimezone.innerHTML = 'Invalid query';
+                dataIsp.innerHTML = 'Invalid query';
+                document.getElementById("map").style = "opacity: .25;";
             }
-            getMap(currentLat, currentLng);
-
         })
         .catch(function (error) {
             console.log(error);
@@ -62,10 +76,10 @@ function getMap(lat, lng) {
     marker = L.marker([currentLat, currentLng], {icon: mapMarker}).addTo(map);
 }
 
-// Get search input
+// Get search input and use it in API call
 function getInput() {
-    let searchIp = document.getElementById("search").value;
-    getData(`ipAddress=${searchIp}`);
+    searchInput = document.getElementById("search").value;
+    getData(searchInput);
 }
 
 // Press enter to submit search input
