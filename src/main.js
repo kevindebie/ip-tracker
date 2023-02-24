@@ -35,7 +35,7 @@ function getData(ipAddress) {
 
                 // Show the data in white block
                 dataIp.innerHTML = data.query;
-                dataLocation.innerHTML = `${data.city}, ${data.country} ${data.zip}`;
+                dataLocation.innerHTML = `${data.city}, ${data.countryCode} ${data.zip}`;
                 dataTimezone.innerHTML = data.timezone;
                 dataIsp.innerHTML = data.isp;
 

@@ -20,7 +20,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen" onload="defaultIp()">
-  <header class="flex flex-wrap justify-center min-h-[250px] bg-[url('/images/pattern-bg-desktop.png')] bg-cover bg-no-repeat">
+  <header class="flex flex-wrap justify-center h-[350px] md:h-auto bg-[url('/images/pattern-bg-desktop.png')] bg-cover bg-no-repeat">
       <div class="container text-center pt-6">
         <h1 class="mb-4 text-white">IP Address Checker</h1>
         <div class="flex justify-center">
@@ -28,39 +28,39 @@
                  name="search"
                  id="search"
                  placeholder="Search for any IP address or domain"
-                 class="py-4 px-5 rounded-tl-xl rounded-bl-xl min-w-[calc(100% - 3.5rem)] lg:min-w-[500px]"
+                 class="py-4 px-5 rounded-tl-xl rounded-bl-xl flex-1 text-sm md:text-base lg:max-w-[500px]"
           >
           <button id="searchSubmit"
-                  class="inline-flex items-center justify-center bg-dark-gray w-14 rounded-tr-xl rounded-br-xl"
+                  class="inline-flex items-center justify-center bg-dark-gray w-12 md:w-14 rounded-tr-xl rounded-br-xl"
                   onclick="getInput()">
             <img src="images/icon-arrow.svg" alt="search">
           </button>
         </div>
       </div>
 
-      <div class="container grid grid-cols-1 divide-x self-end bg-white py-8 rounded-xl translate-y-[50%] shadow-2xl text-center relative z-10 md:grid-cols-2 md:text-left lg:grid-cols-4">
+      <div class="container grid grid-cols-1 divide-x self-end bg-white py-6 rounded-xl shadow-2xl text-center relative mt-8 z-10 md:py-8 md:-mt-20 md:translate-y-[50%] md:grid-cols-2 md:text-left lg:-mt-6 lg:grid-cols-4">
         <div class="px-8 mb-6 lg:mb-0">
-          <p class="uppercase text-medium-gray font-bold text-sm tracking-[3px] mb-2">IP address</p>
-          <p id="ip" class="text-2xl font-medium"></p>
+          <p class="uppercase text-medium-gray font-bold text-[12px] leading-none md:text-sm tracking-[3px] mb-2">IP address</p>
+          <p id="ip" class="md:text-2xl font-medium"></p>
         </div>
         <div class="px-8 mb-6 lg:mb-0">
-          <p class="uppercase text-medium-gray font-bold text-sm tracking-[3px] mb-2">Location</p>
-          <p id="location" class="text-2xl font-medium"></p>
+          <p class="uppercase text-medium-gray font-bold text-[12px] leading-none md:text-sm tracking-[3px] mb-2">Location</p>
+          <p id="location" class="md:text-2xl font-medium"></p>
         </div>
         <div class="px-8 mb-6 lg:mb-0">
-          <p class="uppercase text-medium-gray font-bold text-sm tracking-[3px] mb-2">Timezone</p>
-          <p id="timezone" class="text-2xl font-medium"></p>
+          <p class="uppercase text-medium-gray font-bold text-[12px] leading-none md:text-sm tracking-[3px] mb-2">Timezone</p>
+          <p id="timezone" class="md:text-2xl font-medium"></p>
         </div>
         <div class="px-8">
-          <p class="uppercase text-medium-gray font-bold text-sm tracking-[3px] mb-2">ISP</p>
-          <p id="isp" class="text-2xl font-medium"></p>
+          <p class="uppercase text-medium-gray font-bold text-[12px] leading-none md:text-sm tracking-[3px] mb-2">ISP</p>
+          <p id="isp" class="md:text-2xl font-medium"></p>
         </div>
       </div>
 
   </header>
 
-  <main class="flex-1 relative">
-    <div id="map" class="bg-neutral-100 absolute w-full h-full z-0"></div>
+  <main class="flex-1 relative min-h-[500px] lg:min-h-full">
+    <div id="map" class="bg-neutral-100 min-h-[500px] absolute w-full h-full z-0 lg:min-h-full"></div>
   </main>
 
   <footer class="py-2 text-xs text-center">
