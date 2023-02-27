@@ -51,7 +51,7 @@ function getData(ipAddress) {
                 dataLocation.innerHTML = 'Invalid query';
                 dataTimezone.innerHTML = 'Invalid query';
                 dataIsp.innerHTML = 'Invalid query';
-                document.getElementById("map").style = "opacity: .25;";
+                document.getElementById("map").style = "opacity: .25; pointer-events: none;";
             }
         })
         .catch(function (error) {
