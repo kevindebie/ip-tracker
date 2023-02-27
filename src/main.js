@@ -63,8 +63,9 @@ function getData(ipAddress) {
 function getMap(lat, lng) {
     map = L.map('map', {attributionControl: false}).setView([lat, lng], 13);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
         maxZoom: 16,
+        subdomains:['mt0'],
     }).addTo(map);
 
     // Show custom marker in map
