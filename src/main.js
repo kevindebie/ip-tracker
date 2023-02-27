@@ -11,33 +11,33 @@ let dataIsp = document.getElementById("isp");
 
 // Get current IP address from visitor
 function defaultIp() {
-    fetch('http://ip-api.com/json/')
+    fetch('https://ipapi.co/json/')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            currentIp = data.query;
+            currentIp = data.ip;
             getData(currentIp);
         })
 }
 
 // Get the additional data based on the IP address
 function getData(ipAddress) {
-    fetch(`http://ip-api.com/json/${ipAddress}`)
+    fetch(`https://ipapi.co/${ipAddress}/json/`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            if (data.status == 'success') {
+            if (data.ip.length > 0) {
                 console.log(data);
-                currentLat = data.lat;
-                currentLng = data.lon;
+                currentLat = data.latitude;
+                currentLng = data.longitude;
 
                 // Show the data in white block
-                dataIp.innerHTML = data.query;
-                dataLocation.innerHTML = `${data.city}, ${data.countryCode} ${data.zip}`;
+                dataIp.innerHTML = data.ip;
+                dataLocation.innerHTML = `${data.country_capital}, ${data.country_code} ${data.postal}`;
                 dataTimezone.innerHTML = data.timezone;
-                dataIsp.innerHTML = data.isp;
+                dataIsp.innerHTML = data.org;
 
                 // Get the map
                 if (map !== undefined) {
