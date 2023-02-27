@@ -714,6 +714,18 @@ h1 {
   background-image: url('/images/pattern-bg-desktop.png');
 }
 
+.bg-\[url\(\'\.\/images\/pattern-bg-desktop\.png\'\)\] {
+  background-image: url('./images/pattern-bg-desktop.png');
+}
+
+.bg-\[url\(\'images\/pattern-bg-desktop\.png\'\)\] {
+  background-image: url('images/pattern-bg-desktop.png');
+}
+
+.bg-\[url\(\'\/ip-tracker\/images\/pattern-bg-desktop\.png\'\)\] {
+  background-image: url('/ip-tracker/images/pattern-bg-desktop.png');
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -809,22 +821,8 @@ h1 {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.duration-150 {
-  transition-duration: 150ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
-}
-
-.hover\:bg-neutral-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blue-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-black:hover {
@@ -835,10 +833,6 @@ h1 {
 @media (min-width: 768px) {
   .md\:-mt-20 {
     margin-top: -5rem;
-  }
-
-  .md\:mb-6 {
-    margin-bottom: 1.5rem;
   }
 
   .md\:mb-0 {

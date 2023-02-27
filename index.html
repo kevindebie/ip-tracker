@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link href="dist/output.css" rel="stylesheet">
+  <link href="./dist/output.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 </head>
 
 <body class="flex flex-col min-h-screen" onload="defaultIp()">
-  <header class="flex flex-wrap justify-center h-[350px] md:h-auto bg-[url('/images/pattern-bg-desktop.png')] bg-cover bg-no-repeat">
+  <header class="flex flex-wrap justify-center h-[350px] md:h-auto bg-[url('/ip-tracker/images/pattern-bg-desktop.png')] bg-cover bg-no-repeat">
       <div class="container text-center pt-6">
         <h1 class="mb-4 text-white">IP Address Checker</h1>
         <div class="flex justify-center">
@@ -67,6 +67,6 @@
       <p>Challenge by <a class="underline" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by Kevin de Bie.</p>
   </footer>
 
-  <script src="src/main.js"></script>
+  <script src="./src/main.js"></script>
 </body>
 </html>
