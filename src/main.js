@@ -11,33 +11,33 @@ let dataIsp = document.getElementById("isp");
 
 // Get current IP address from visitor
 function defaultIp() {
-    fetch('https://ipapi.co/json/')
+    fetch('https://ipwho.is/')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             currentIp = data.ip;
             getData(currentIp);
+            console.log(data);
         })
 }
 
 // Get the additional data based on the IP address
 function getData(ipAddress) {
-    fetch(`https://ipapi.co/${ipAddress}/json/`)
+    fetch(`https://ipwho.is/${ipAddress}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             if (data.ip.length > 0) {
-                console.log(data);
                 currentLat = data.latitude;
                 currentLng = data.longitude;
 
                 // Show the data in white block
                 dataIp.innerHTML = data.ip;
-                dataLocation.innerHTML = `${data.country_capital}, ${data.country_code} ${data.postal}`;
-                dataTimezone.innerHTML = data.timezone;
-                dataIsp.innerHTML = data.org;
+                dataLocation.innerHTML = `${data.capital}, ${data.country}`;
+                dataTimezone.innerHTML = data.timezone.id;
+                dataIsp.innerHTML = data.connection.isp;
 
                 // Get the map
                 if (map !== undefined) {
@@ -46,7 +46,6 @@ function getData(ipAddress) {
                 getMap(currentLat, currentLng);
                 document.getElementById("map").style = "opacity: 1;";
             } else {
-                console.log(data);
                 dataIp.innerHTML = 'Invalid IP address';
                 dataLocation.innerHTML = 'Invalid query';
                 dataTimezone.innerHTML = 'Invalid query';
