@@ -29,7 +29,8 @@ function getData(ipAddress) {
             return response.json();
         })
         .then(function (data) {
-            if (data.ip.length > 0) {
+            console.log(data);
+            if (data.success == true) {
                 currentLat = data.latitude;
                 currentLng = data.longitude;
 

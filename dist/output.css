@@ -710,18 +710,6 @@ h1 {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/images\/pattern-bg-desktop\.png\'\)\] {
-  background-image: url('/images/pattern-bg-desktop.png');
-}
-
-.bg-\[url\(\'\.\/images\/pattern-bg-desktop\.png\'\)\] {
-  background-image: url('./images/pattern-bg-desktop.png');
-}
-
-.bg-\[url\(\'images\/pattern-bg-desktop\.png\'\)\] {
-  background-image: url('images/pattern-bg-desktop.png');
-}
-
 .bg-\[url\(\'\/ip-tracker\/images\/pattern-bg-desktop\.png\'\)\] {
   background-image: url('/ip-tracker/images/pattern-bg-desktop.png');
 }
@@ -865,11 +853,6 @@ h1 {
     text-align: left;
   }
 
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -878,6 +861,11 @@ h1 {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
