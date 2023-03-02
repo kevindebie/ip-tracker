@@ -1,6 +1,6 @@
 let currentIp = '';
 let currentLat = '';
-let currentLng = '';
+let currentLng = '';agazbptSideBar-option-editLayoutbptSideBar-option-editLayout
 let map;
 let marker;
 let searchInput;
@@ -24,21 +24,21 @@ function defaultIp() {
 
 // Get the additional data based on the IP address
 function getData(ipAddress) {
-    fetch(`https://ipwho.is/${ipAddress}`)
+    fetch(`https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_a6ttiRMcItZpr2F76Xc1UQYKysBwS&ipAddress=${ipAddress}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            if (data.success == true) {
-                currentLat = data.latitude;
-                currentLng = data.longitude;
+            if (!data.error) {
+                currentLat = data.location.lat;
+                currentLng = data.location.lng;
 
                 // Show the data in white block
                 dataIp.innerHTML = data.ip;
-                dataLocation.innerHTML = `${data.capital}, ${data.country}`;
-                dataTimezone.innerHTML = data.timezone.id;
-                dataIsp.innerHTML = data.connection.isp;
+                dataLocation.innerHTML = `${data.location.city}, ${data.location.country}`;
+                dataTimezone.innerHTML = data.location.timezone;
+                dataIsp.innerHTML = data.isp;
 
                 // Get the map
                 if (map !== undefined) {
