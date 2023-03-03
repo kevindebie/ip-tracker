@@ -1,6 +1,6 @@
 let currentIp = '';
 let currentLat = '';
-let currentLng = '';agazbptSideBar-option-editLayoutbptSideBar-option-editLayout
+let currentLng = '';
 let map;
 let marker;
 let searchInput;
@@ -17,14 +17,14 @@ function defaultIp() {
         })
         .then(function (data) {
             currentIp = data.ip;
-            getData(currentIp);
+            getData(`ipAddress=${currentIp}`);
             console.log(data);
         })
 }
 
 // Get the additional data based on the IP address
 function getData(ipAddress) {
-    fetch(`https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_a6ttiRMcItZpr2F76Xc1UQYKysBwS&ipAddress=${ipAddress}`)
+    fetch(`https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_a6ttiRMcItZpr2F76Xc1UQYKysBwS&${ipAddress}`)
         .then(function (response) {
             return response.json();
         })
@@ -47,7 +47,7 @@ function getData(ipAddress) {
                 getMap(currentLat, currentLng);
                 document.getElementById("map").style = "opacity: 1;";
             } else {
-                dataIp.innerHTML = 'Invalid IP address';
+                dataIp.innerHTML = 'Invalid search input';
                 dataLocation.innerHTML = 'Invalid query';
                 dataTimezone.innerHTML = 'Invalid query';
                 dataIsp.innerHTML = 'Invalid query';
@@ -80,7 +80,16 @@ function getMap(lat, lng) {
 // Get search input and use it in API call
 function getInput() {
     searchInput = document.getElementById("search").value;
-    getData(searchInput);
+
+    // If input contains numbers then use ip address
+    if (searchInput.match(/\d+/g) !== null ) {
+        getData(`ipAddress=${searchInput}`);
+    }
+
+    // Strip http or https from input because api accepts domains only without protocol
+    let validDomain = searchInput.replace(/(^\w+:|^)\/\//, '');
+    getData(`domain=${validDomain}`)
+
 }
 
 // Press enter to submit search input
