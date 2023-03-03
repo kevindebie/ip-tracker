@@ -86,9 +86,11 @@ function getInput() {
         getData(`ipAddress=${searchInput}`);
     }
 
-    // Strip http or https from input because api accepts domains only without protocol
-    let validDomain = searchInput.replace(/(^\w+:|^)\/\//, '');
+    // Strip http/https and trailing slash from input because api accepts domains only without protocol and trailing slash
+    let validDomain = searchInput.replace(/(^\w+:|^)\/\//, '').replace(/\/+$/, '');
     getData(`domain=${validDomain}`)
+
+    console.log(validDomain);
 
 }
 
